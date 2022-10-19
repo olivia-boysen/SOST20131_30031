@@ -22,13 +22,12 @@ knitr::opts_chunk$set(echo = F,
                       cache = FALSE)
 ```
 
-## Basic statistical concepts
-
+## BASIC STATISTICAL CONCEPTS
 
 In this section you will be introduced to a set of concepts that enable data to be explored with the **objective** 
 
 * of summarising and understanding the main features of the variables contained within the data and 
-* to investigate the nature of any linkages between the variables that may exist
+* of investigating the nature of any linkages between the variables that may exist
 
 The starting point is to understand **what data is**.
 
@@ -41,16 +40,15 @@ Can you provide a formal definition of the population and the sample? 😁
 
 In statistical terms the whole data set is called the **population**. This represents **“Perfect Information”**, however in practice it is often impossible to enumerate the whole population. The analyst therefore takes a sample drawn from the population and uses this information to make judgements (**inferences**) about the population.
 
-Clearly if the results of any analysis are based on a **sample drawn from the population**, then if the sample is going to have any validity, then the sample should be chosen in a way that is fair and reflects the structure of the population.
+Clearly if the results of any analysis are based on a **sample drawn from the population**, if the sample is going to have any validity, then the sample should be chosen in a way that is fair and reflects the structure of the population.
 
 The process of sampling to obtain a representative sample is a large area of statistical study. The simplest model of a representative sample is a **"random sample"**:
 
 *A sample chosen in such a way that each item in the population has an equal chance of being included is a random sample.*
 
-As soon as sample data is used, the information contained within the sample is *“Imperfect”* and depends on the particular sample chosen. The **key problem** is to use this sample data to draw valid conclusions about the population with the knowledge of and taking into account the '*error due to sampling*'.
+As soon as sample data is used, the information contained within the sample is *“Imperfect”* and depends on the particular sample chosen. The **key problem** is to use this sample data to draw valid conclusions about the population with knowledge of and taking into account the '*error due to sampling*'.
 
 The importance of working with representative samples should be seriously considered; a good way to appreciate this importance is to see the consequences of using unrepresentative samples. A book by [Darrell Huff](https://en.wikipedia.org/wiki/Darrell_Huff) called [How to Lie with Statistics](https://en.wikipedia.org/wiki/How_to_Lie_with_Statistics), published by [Penguin](https://www.penguin.co.uk/) contains several anecdotes of unrepresentative samples and the consequences of treating them as representative.
-
 
 ### Data analysis using sample data
 
@@ -71,7 +69,7 @@ i) **Do I understand the problem** under investigation and are the objectives of
 
 ii) Do I understand exactly **what each variable is measuring/recording?**
 
-#### Describing variables
+### Describing variables
 
 A starting point is to examine the characteristics of each individual variable in the data set. 
 
@@ -81,20 +79,21 @@ The way to proceed depends upon the type of variable being examined.
 
 The variables can be one of two broad types:
 
--	**Attribute variables**: are variables that have their outcomes described in terms of their characteristics or attributes. 
+-	**Attribute variables**: are variables that have their outcomes described in terms of their characteristics or attributes 
+ 
   * gender
   * days in a week
   
 A common way of handling attribute data is to give it a numerical code. Hence, we often refer to them as coded variables.
 
--	**Measured variables**: are  variables that have their outcomes taken from a numerical scale; the resulting outcome is expressed in numerical terms.  
+-	**Measured variables**: are  variables that have their outcomes taken from a numerical scale; the resulting outcome is expressed in numerical terms  
+ 
   * weight
   * age
 
 There are two types of measured variables, a measured variable that is measured on some continuous scale of measurement, e.g. a person’s height. This type of measured variable is called a *continuous variable*.  The other type of measured variable is a *discrete variable*. This results from counting; for example 'the number of passengers on a given flight'. 
 
-
-#### The concept of statistical distribution
+### The concept of statistical distribution
 
 **The concept of statistical distribution is central to statistical analysis.**
 
@@ -114,20 +113,19 @@ barplot(c(5,9),
 
 **measured:**
 ```{r tidy=FALSE, echo=FALSE}
-x <- seq(-3,3,length=200)
+x<-seq(-3,3,length=200)
 s = 1
 mu = 0
 y <- (1/(s * sqrt(2*pi))) * exp(-((x-mu)^2)/(2*s^2))
-plot(x,y, type="l", lwd=2, axes=FALSE, xlab="", ylab="")
-axis(1, at=-3:3, labels = c("-3", "-2", "-1std", "mean", "1std", "2", "3"))
-abline(v=0, col="red", lwd=2, lty=2)
-abline(v=c(-1,1), col="blue", lwd=2, lty=3)
+plot(x,y, type = "l", lwd = 2, axes = FALSE, xlab = "", ylab = "")
+axis(1, at = -3:3, labels = c("-3", "-2", "-1std", "mean", "1std", "2", "3"))
+abline(v = 0, col="red", lwd=2, lty=2)
+abline(v = c(-1,1), col="blue", lwd=2, lty=3)
 ```
 
+### What does the distribution show?
 
-#### What does the distribution show?
-
-For an attribute variable it is very simple. We observe the frequency of occurrence of each level of the attribute variable as shown in the barplot above.
+For an attribute variable it is very simple. We observe the frequency of occurrence of each level of the attribute variable as shown in the barplot above/previous page.
 
 For a measured variable the area under the curve from one value to another measures the relative proportion of the population having the outcome value in that range. 
 
@@ -153,8 +151,8 @@ The diagram below shows this pictorially:
 
 ```{r echo=FALSE, tidy=FALSE}
 nf <- layout(mat = matrix(c(1,2),2,1, byrow=TRUE),  height = c(3,1))
-xseq <- seq(-4,4,.01)
-densities <- dnorm(xseq, 0,1)
+xseq<-seq(-4,4,.01)
+densities<-dnorm(xseq, 0,1)
 par(mar=c(3.1, 3.1, 1.1, 2.1))
 plot(xseq, densities, col="darkgreen",xlab="", ylab="Density", type="l",lwd=2, cex=2, main="PDF of Standard Normal", cex.axis=.8, axes = FALSE)
 axis(1, at = -4:4, labels = c("min", "-3", "Q1", "-1", "median", "1", "Q3", "3", "max"))
@@ -174,52 +172,57 @@ An alternative measure of Skewness is the Quartile Measure of Skewness defined a
 
 `Quartile Measure of Skewness  = [(Q1 - Q3) - (Q2 - Q1)]/(Q3 - Q1)`
 
----
-
-**Important Key Points:**
+### 💡 **Important Key Points**
 
 - What is Data?
 - Variables
 - Two types of variable:
+
 	* an attribute variable 
   * a measured variable
 
 - The concept of Statistical Distribution:
+
 	* As applied to an attribute variable
 	* As applied to a measured variable
+
 - Descriptive Statistics for a measured variable:
+
 	* Measures of Centre
+
 		- Mean,  Median
+
 	* Measures of Width:
+
 		- Standard Deviation
 		- Inter-Quartile Range
 
 The descriptive statistics provide a numerical description of the key parameters of the distribution of a measured sample variable.
 
-___
 
 ### Investigating the relationship between variables
 
-One of the key steps required of the Data Analyst is to investigate the relationship between variables. This requires a further **classification of the variables** contained within the data, as either a <span style="color:red">**response**</span> variable or an <span style="color:red">**explanatory**</span> variable.  
+As we have already seen, one of the key steps required of the Data Analyst is to investigate the relationship between variables. This requires a further **classification of the variables** contained within the data, as either a <span style="color:red">**response**</span> variable or an <span style="color:red">**explanatory**</span> variable.  
 
 A <span style="color:red">**response**</span> variable is a variable that measures either directly or indirectly the objectives of the analysis.
 
 An <span style="color:red">**explanatory**</span> variable is a variable that may influence the response variable.
+ 
+### Bivariate relationships
 
-#### Bivariate relationships
+In general there are four different combinations of types of Response Variables and types of Explanatory Variables. These four combinations are shown below:
 
-In general there are four different combinations of type of Response Variable and type of Explanatory Variable. These four combinations are shown below:
-
-![](images/RelationshipMatrix.png?width=30pc)
+```{r RelationshipMatrix, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/RelationshipMatrix.png")
+```
 
 The starting point for any  <span style="color:red">investigation of the connections</span> between a **response** variable and an **explanatory** variable starts with examining the variables, and defining the response variable, or response variables, and the explanatory variables.
 
 🤓💡: In large empirical investigations there may be a number of objectives and a number of response variables.
 
-The method for investigating the connections between a response variable and an explanatory variable depends on the type of variables. The methodology is different for combinations as shown in the box above, and applying an inappropriate method causes problems. 💡⚡️😩  
+The method for investigating the connections between a response variable and an explanatory variable depends on the type of variables. The methodology is different for different combinations as shown in the box above, and applying an inappropriate method causes problems. 💡⚡️😩  
 
-
-#### DA methodology
+### DA methodology
 
 The first step is to have a clear idea of what is meant by a connection between the response variable and the explanatory variable.  This will provide a framework for defining a <span style="color:red">Data-Analysis process</span> to explore the connection between the two variables, and will utilise the ideas previously developed. 
 
@@ -249,23 +252,27 @@ ii)	Yes there is evidence of a relationship, in which case the link needs to be 
 
 This process can be represented diagrammatically as:
 
-![](images/DAMethodology.png?width=40pc)
+
+```{r DAMet, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/DAMethodology.png")
+```
 
 For each of the four data analysis situations given, the data analyst needs to know what constitutes the Initial Data Analysis (I.D.A.) and how to undertake and interpret the I.D.A. If Further Data Analysis is required the analyst needs to know how to undertake and interpret the Further Data Analysis.
 
-
-#### Measured Vs Attribute(2-levels)
+### Measured Vs Attribute(2-levels)
 
 There is a relationship between a measured response and an attribute explanatory variable if the average value of the response is dependent on the level of the attribute explanatory variable.
 
-Given a measured response and an attribute explanatory variable with two levels, "<span style="color:red">red</span>" & "<span style="color:blue">blue</span>", if the statistical distribution of the response variable for attribute level "<span style="color:red">red</span>" and attribute level "<span style="color:blue">blue</span>" are exactly the same then the level of the attribute variable has no influence on the value response, there is no relationship.  
+Given a measured response and an attribute explanatory variable with two levels, "<span style="color:red">red</span>" & "<span style="color:blue">blue</span>", if the statistical distribution of the response variable for attribute level "<span style="color:red">red</span>" and attribute level "<span style="color:blue">blue</span>" are exactly the same then the level of the attribute variable has no influence on the value response, and there is no relationship.  
 
 This can be illustrated as below:
 
-![](images/MvAMethodology.png?width=40pc)
+```{r MvADAM, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/MvAMethodology.png")
+```
 
 
-#### Measured Vs Measured
+### Measured Vs Measured
 
 The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of $Y$ the response variable and the value of $X$ the explanatory variable. For the whole population a graph of $Y$ against $X$ could be plotted conceptually. 
 
@@ -276,7 +283,7 @@ If the nature of the link between Y and X is under investigation then this could
 
 $Y = f(X) + effect$ of all other variables [effect of all other variables is commonly abbreviated to $e$]
 
-Considered the model: $$Y = f(X) + e \text{		[e is the effect of all other variables]}$$
+Consider the model: $$Y = f(X) + e \text{		[e is the effect of all other variables]}$$
 
 The influence on the response variable Y can be thought of as being made up of two components:
 
@@ -315,15 +322,17 @@ The definition and interpretation of `R_sq` is a very important tool in the data
 
 We can put those ideas into our DA Methodology frameworks as shown below.
 
-![](images/MvMMethodology.png?width=40pc)
+```{r MvMDAM, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/MvMMethodology.png")
+```
 
-🤓💡 Note that you will hardly ever be in the situation in which $R^2$  would be so close to zero that it would make you conclude that on the basis of the sample evidence used in IDA it is possible to conclude that there is no relationship between the two variables. If $R^2$ value is very small (for example around $2\%$) this would need to be further tested to conclude if it is statistically significant based on the sample evidence by applying FDA.
+🤓💡 Note that you will hardly ever be in the situation in which $R^2$ would be so close to zero that it would make you conclude that on the basis of the sample evidence used in IDA it is possible to conclude that there is no relationship between the two variables. If $R^2$ value is very small (for example around $2\%$) this would need to be further tested to conclude if it is statistically significant based on the sample evidence by applying FDA.
 
-#### Further data analysis (FDA)
+### Further Data Analysis
 
 If the <span style="color:red">'**Initial Data Analysis**'</span> is <span style="color:red">*inconclusive*</span> then <span style="color:red">'**Further Data Analysis**'</span> is required. 
 
-The 'Further Data Analysis' is a procedure that enables a decision to be made, based on the sample evidence, as to one of two outcomes:  
+'Further Data Analysis' is a procedure that enables a decision to be made, based on the sample evidence, as to one of two outcomes:  
 
 - There is no relationship
 -	There is a relationship
@@ -355,12 +364,13 @@ All hypothesis tests are carried out in four stages:
   - Simple Regression Model
   
 * Measured Response v Measured Explanatory Variable**s**
+  
   - Multifactor Regression Model
 
 * Attribute Response v Attribute Explanatory Variable
+  
   - Chi-Square Test of Independence
 
-___
 
 ### **YOUR TURN 👇**
 
@@ -370,15 +380,14 @@ Make sure you can answer the following questions:
 
 2) What is the purpose of summary statistics?
 
-3)	What is the data analysis methodology for exploring the relationship between:
+3) What is the data analysis methodology for exploring the relationship between:
 
   i) a measured response variable and an attribute explanatory variable?
   
   i) a measured response variable and a measured explanatory variable?
 
----
 
-## Regression modelling
+## REGRESSION
 
 Earlier we looked at some basic statistical concepts. This section examines how to investigate the nature of any relationship that may exist between a measured response variable and a measured explanatory variable. 
 
@@ -397,7 +406,9 @@ ii.	The sample evidence is consistent with there being a link between the respon
 
 As we have already seen in the previous sections, this process can be represented diagrammatically as:
 
-![](images/DAMethodology.png?width=40pc)
+```{r DAMeth, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/DAMethodology.png")
+```
 
 The Data-Analysis Methodology seeks to find the answer to the following key question:
 
@@ -409,39 +420,40 @@ a)	There is no evidence of a relationship, labelled as the ‘No’ outcome in t
 
 b)	There is evidence of a relationship, labelled as the ‘Yes’ outcome in the diagram above, in which case the nature of the relationship needs to be described.
 
-The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of $Y$ the response variable and the value of $X$ the explanatory variable. For the whole population a graph of $Y$ against $X$ could be plotted conceptually. If the graph looked as in the diagram below, then there is quite clearly a link between Y and X. If the value of $X$ is known, the exact value of Y can be read off the graph. This is an unlikely scenario in the data-analysis context, because the relationship shown is a **deterministic relationship**. *Deterministic means that if the value of $X$ is known then the value of $Y$ can be precisely determined from the relationship between $Y$ and $X$.*  
+The first step is to have a clear idea of what is meant by a connection between a measured response variable and a measured explanatory variable. Imagine a population under study consisting of a very large number of population members, and on each population member two measurements are made, the value of $Y$ the response variable and the value of $X$ the explanatory variable. For the whole population a graph of $Y$ against $X$ could be plotted conceptually. If the graph appears as in the diagram below, then there is quite clearly a link between Y and X. If the value of $X$ is known, the exact value of Y can be read off the graph. This is an unlikely scenario in the data-analysis context, because the relationship shown is a **deterministic relationship**. *Deterministic means that if the value of $X$ is known then the value of $Y$ can be precisely determined from the relationship between $Y$ and $X$.*  
 
-![](images/deterministic_relationship.png?width=40pc)
 
----
+```{r deterministic_relationship, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/deterministic_relationship.png")
+```
 
-### Scatter plot
+### Scatter Plot
 
-When analysing the relationship between the two measured variable we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for the explanatory variable commonly known in the regression modelling as a predictor and labelled with $X$, and one axis for the response variable, which is labelled with $Y$ and commonly known as the outcome variable. Thus, each point on the graph represents a single $(X, Y)$ pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.
+When analysing the relationship between the two measured variables we start off by creating a scatter plot. A scatter plot is a graph that shows one axis for the explanatory variable commonly known in regression modelling as a predictor and labelled $X$, and one axis for the response variable, which is labelled $Y$ and commonly known as the outcome variable. Thus, each point on the graph represents a single $(X, Y)$ pair. The primary benefit is that the possible relationship between the two variables can be viewed and analysed with one glance and often the nature of a relationship can be determined quickly and easily.
 
 Let us consider a few scatter plots. The following graph represents a **perfect linear relationship**. All points lie exactly on a straight line. It is easy in this situation to determine the intercept and the slope, i.e. gradient and hence specify the exact mathematical link between the response variable $Y$ and the explanatory variable $X$.
 
 -**Graph 1**
 
-![](images/Yes_perfect.png?width=30pc)
+```{r Yes_perfect, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/Yes_perfect.png")
+```
 
-The relationship shown in *Graph 2* shows clearly that as the value of $X$ increases the value of $Y$ indecreases, but not exactly on a straight line as in the previous scatter plot. This is showing a statistical link, as the value of the explanatory variable $X$ increases the value of the response variable $Y$ also tends to increase. An explanation for this is that the response $Y$ may depend on a number of different variables, say  $X_1$, $X_2$, $X_3$, $X_4$, $X_5$, $X_6$ etc.  which could be written as:
+The relationship shown in *Graph 2* shows clearly that as the value of $X$ increases the value of $Y$ decreases, but not exactly on a straight line as in the previous scatter plot. This is showing a statistical link, as the value of the explanatory variable $X$ increases the value of the response variable $Y$ also tends to increase. An explanation for this is that the response $Y$ may depend on a number of different variables, say  $X_1$, $X_2$, $X_3$, $X_4$, $X_5$, $X_6$ etc.  which could be written as:
 
 $Y = f(X_1, X_2, X_3, X_4, X_5, X_6, ...)$
 
 -**Graph 2**
 
-![](images/Yes_50.png?width=30pc)
+```{r Yes_50, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/Yes_50.png")
+```
 
 If the nature of the link between $Y$ and $X$ is under investigation then this could be represented as:
 
 $$Y = f(X) + \text{effect of all other variables}$$
 
-
-<span style="color:darred">
-The effect of all other variables is commonly abbreviated to **e**.
-</span>
-
+<span style="color:darkred">The effect of all other variables is commonly abbreviated to **e**.</span>
 
 *Graph 1* shows a link where the effect of all the other variables is nil.  The response $Y$ depends solely on the variable $X$, *Graph 2* shows a situation where $Y$ depends on $X$ but the other variables also have an influence.
 
@@ -475,7 +487,9 @@ Consider Graph 3.  Here there is no discernible pattern, and the value of Y seem
 
 **- Graph 3**
 
-![](images/No_relationship.png?width=30pc)
+```{r No_relationship, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/No_relationship.png")
+```
 
 If $Y$ is not related to $X$ the **Explained Variation component is zero** and all the changes in $Y$ are due to the other variables, that is the **Unexplained Variation**.
 
@@ -483,11 +497,15 @@ Finally, consider Graphs 4 & 5 below:
 
 -**Graph 4**
 
-![](images/Yes_75.png?width=30pc)
+```{r Yes_75, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/Yes_75.png")
+```
 
 -**Graph 5**
 
-![](images/deterministic_neg.png?width=30pc)
+```{r deterministic_neg, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/deterministic_neg.png")
+```
 
 *Graph 4* shows a similar picture to *Graph 2*, the difference being that as the value of $X$ increases the value of $Y$ decreases. The value of $Y$ is influenced by the value of $X$, so the **Explained Variation is high relative to the Unexplained Variation**. Consider the last graph, *Graph 5*, which is a deterministic relationship. **The value of $Y$ is completely specified by the value of $X$**. Hence the **Unexplained Variation is zero**.
 
@@ -509,7 +527,7 @@ This presents two issues:
 - B: Can **The Total Variation in Y**, **Explained Variation** and the **Unexplained Variation** be measured?
 
 <span style="color:darkred">
-The simplest form of connection is a straight-line relationship and the question arises could a straight-line relationship be matched with the information contained in the graphs 1 -5?
+The simplest form of connection is a straight-line relationship and the question arises could a straight-line relationship be matched with the information contained in the graphs 1-5?
 </span>
 
 -	Clearly it is easy for Graph 1 and Graph 5, the intercept and the gradient can be obtained directly from the graph. The relationship can then be written as:
@@ -522,7 +540,6 @@ where:
   ii) b is the gradient  
 
 -	Since the **Explained Variation** is the same as the **Changes in Y** and the **Unexplained Variation** **is zero**, the precise evaluation of these is not necessary.
-
 
 ### Developing a statistical model
 
@@ -542,9 +559,10 @@ Consider the simple numerical example below:
 
 Suppose we would like to fit a straight-line relationship to the following data:
 
-|$X$|	1|	2|	3|	4|	5|	6|
-|---|--|---|---|---|---|---|
-|$Y$|	7|	8|	12|	13|	14|	18|
+|data |	 |
+|---|--|--|---|----|---|---|---|
+|$X$|	|  1|	2|	 3|	 4|  5|	 6|
+|$Y$|	|	7|	8|	12|	13|	14|	18|
 
 The problem is to use this information to measure **the intercept** and **the gradient** for this data set.  
 
@@ -552,7 +570,7 @@ A simple way to do this is to draw what is considered to be **the line of best f
 
 **The intercept** can be read off the graph as approximately $5$, and **the gradient** can be simply measured since if $X = 0$  then  $Y = 5$, and if  $X = 5$ then  $Y = 15$,  so for a change in $X$ of $5$ units (from 0 to 5) $Y$ changes by $10$, from $5$ to $15$. The definition of **the gradient** is  **The change in Y for a unit increase in X**  hence the gradient for this data set is $10/5 = 2$.
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 x <- c(1:6)
 y <- c(7, 8, 12, 13, 14, 18)
 plot(x, y, pch = 16, main = "y = 5 + 2x + e", xlim = c(0.25, 6), ylim = c(0, 20))
@@ -575,9 +593,9 @@ We can add more information about the predicted values of $Y$ by the *"estimated
 
 Looking at the information contained in the previous plot, the column headed $\hat{Y}$ contains the predicted values of $Y$ for the values of $X$. For example, the first value of $\hat{Y}$ is when $X = 1$ and $Yp = 5 + 2*X$ so $\hat{Y} = 5 +2*1 = 7$.  The column headed $(Y - \hat{Y})$ is the difference between the actual value and the value predicted by the line.  For example when $X = 1$, $Y = 7$ and $\hat{Y} = 7$ so the predicted value lies on the line, as can be seen in the graph. For the value $X = 2$ the actual value lies $1$ unit below the line, as can also be seen from the graph.
 
-The column $(Y - \hat{Y})$  **measures the disagreement between the actual data and the line** and a sensible strategy is to **make this level of disagreement as small as possible**. Referring to the graph on the table above notice that sometimes the actual data value is below the line and sometimes it is above the line, so on average the value will be close to zero. In this particular example the sum of the $(Y - \hat{Y})$ values add up to zero (in a more conventional notation $\Sigma(Y - \hat{Y})  = 0$). The quantity $\Sigma(Y - \hat{Y})$ does not seem to be a satisfactory measure of disagreement, because there are a number of different lines with the property $\Sigma(Y - \hat{Y}) = 0$.
+The column $(Y - \hat{Y})$  **measures the disagreement between the actual data and the line** and a sensible strategy is to **make this level of disagreement as small as possible**. Referring to the graph in the table above, notice that sometimes the actual data value is below the line and sometimes it is above the line, so on average the value will be close to zero. In this particular example the sum of the $(Y - \hat{Y})$ values add up to zero (in a more conventional notation $\Sigma(Y - \hat{Y})  = 0$). The quantity $\Sigma(Y - \hat{Y})$ does not seem to be a satisfactory measure of disagreement, because there are a number of different lines with the property $\Sigma(Y - \hat{Y}) = 0$.
 
-**A way of obtaining a satisfactory measure of disagreement is to square the individual $(Y - \hat{Y})$ values and add them up**.  i.e. obtain the quantity $\Sigma(Y - \hat{Y})^2$. The result is always a positive number since the square of a negative number is positive. If this quantity is then chosen to be as small as possible then the level of disagreement between the actual data points and the fitted line is the least. This provides a criterion for the choice of the best line.
+**A way of obtaining a satisfactory measure of disagreement is to square the individual $(Y - \hat{Y})$ values and add them up**. i.e. obtain the quantity $\Sigma(Y - \hat{Y})^2$. The result is always a positive number since the square of a negative number is positive. If this quantity is then chosen to be as small as possible then the level of disagreement between the actual data points and the fitted line is the least. This provides a criterion for the choice of the best line.
 
 The quantity $\Sigma(Y - \hat{Y})^2$ can be easily calculated and added to our table
 
@@ -653,43 +671,44 @@ If the line was a perfect fit, then the $Y$ values and the $\hat{Y}$ values woul
 
 incorporating this calculation into the table above will enable us to get $(\hat{Y} - \bar{Y})^2 = 78.23$.
 
-
-
 ### Correlation does not imply causation
 
 Once the intercept and slope have been estimated using the method of least squares, various indices are studied to determine the reliability of these estimates. One of the most popular of these reliability indices is the **correlation coefficient**. A sample correlation coefficient, more specifically known as the [Pearson Product Moment correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient), denoted $r$, has possible values between $-1$ and $+1$, as illustrated in the diagram below.
 
-![](images/corr_coeff_r.png?width=40pc)
+```{r corr_coeff_r, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/corr_coeff_r.png")
+```
 
-In fact, the correlation is a parameter of the bivariate normal distribution, that is **used to describe the association** between two variables, which does not include a cause and effect statement. That is, one variable does not depend on the other, i.e. the variables are not labelled as dependent and independent. Rather, they are considered as two random variables that seem to vary together. Hence, it is important to recognise that _correlation does not imply causation_. In correlation analysis, both $Y$ and $X$ are assumed to be random variables, whiles in linear regression, $Y$ is assumed to be a random variable and $X$ is assumed to be a fixed variable.
+In fact, the correlation is a parameter of the bivariate normal distribution, that is **used to describe the association** between two variables, which does not include a cause and effect statement. That is, one variable does not depend on the other, i.e. the variables are not labelled as dependent and independent. Rather, they are considered as two random variables that seem to vary together. Hence, it is important to recognise that _correlation does not imply causation_. In correlation analysis, both $Y$ and $X$ are assumed to be random variables, whilst in linear regression, $Y$ is assumed to be a random variable and $X$ is assumed to be a fixed variable.
 
-Main characteristic of the correlation coefficient $r$ are:
+The main characteristics of the correlation coefficient $r$ are:
 
 - there are no units for the correlation coefficient
 - it lies between $-1 \leqslant r \leqslant 1$
+   
     - when its value is near -1 or +1 it shows a strong linear association
     - a correlation coefficient of -1 or +1 indicates a perfect linear association
     - value near 0 suggests no relationship
+
 - the sign of the correlation coefficient indicates the directions of the association
+
     - a positive $r$ is associated with an estimated positive slope
     - a negative $r$ is associated with an estimated negative slope
 
 **BUT!!!**
 
-- $r$ is a measure of the strength of a linear association and it should not be used when the relationship is non-linear, therefore $r$ is NOT used to measure strength of a curved line
+- $r$ is a measure of the strength of a linear association and it should not be used when the relationship is non-linear, therefore $r$ is NOT used to measure the strength of a curved line
 - $r$ is sensitive to outliers
 - $r$ does not make a distinction between the response variable and the explanatory variable. That is, the correlation of $X$ with $Y$ is the same as the correlation of $Y$ with $X$.
 - in simple linear regression, squaring the correlation coefficient, $r^2$, results in the value of the coefficient of determination $R^2$ 
 
-<span style="color:darkred">
-The **Spearman rank correlation coefficient** is an corresponding nonparametric equivalent of the Pearson correlation coefficient. This statistic is computed by replacing the data values with their ranks and pplying the Pearson correlation formula to the ranks of the data. Tied values are replaced with the average rank of the ties. Just like in the case of Pearson coefficient, this one is also really a measure of association rather than correlation, since the ranks are unchanged by a monotonic transformation of the original data. For the sample sizes greater than 10, the distribution of the Spearman rank correlation coefficient can be approximated by the distribution of the Pearson correlation coefficient. It is also worth knowing that the Spearman rank correlation coefficient uses the weights when weights are specified.
-</span>
+<span style="color:darkred">The **Spearman rank correlation coefficient** is a corresponding nonparametric equivalent of the Pearson correlation coefficient. This statistic is computed by replacing the data values with their ranks and applying the Pearson correlation formula to the ranks of the data. Tied values are replaced with the average rank of the ties. Just like in the case of the Pearson coefficient, this one is also really a measure of association rather than correlation, since the ranks are unchanged by a monotonic transformation of the original data. For sample sizes greater than 10, the distribution of the Spearman rank correlation coefficient can be approximated by the distribution of the Pearson correlation coefficient. It is also worth knowing that the Spearman rank correlation coefficient uses weights when weights are specified.</span>
 
 ### The coefficient of determination $R^2$
 
 We realise that when fitting a regression model we are seeking to find out how much variance is explained, or is accounted for, by the explanatory variable $X$ in an outcome variable $Y$.
 
-In the earlier example above the following has been calculated:
+In the earlier example the following has been calculated:
 
 i.   $\text{The Total Variation in }$$Y = 82.00$
 ii.  $\text{The Explained Variation in }$$Y = 78.23$
@@ -700,7 +719,7 @@ Notice the relationship given below, is satisfied
 $$\text{The Total Variation in Y = Explained Variation + Unexplained Variation}$$
 	
 $$82.00 = 78.23 + 3.77$$
-What do these quantities tell us?  They are difficult to interpret because they are expressed in the units of the problem.
+What do these quantities tell us? They are difficult to interpret because they are expressed in the units of the problem.
 
 Consider the following ratio:
 
@@ -708,7 +727,7 @@ ${\text{The Explained Variation in Y} \over \text{The Total Variation in Y}} = {
 
 This is saying that $0.954$ or $95.4\%$ of the changes in $Y$ are explained by changes in $X$. This is a useful and useable measure of the effectiveness of the match between the actual $Y$ values and the predicted $Y$ values.
 
-Reviewing the five scatter prolos (Graphs 1 to 5) it can easily be seen that if the line is a perfect fit to the actual $Y$ values as in *Graphs 1 & 5* then this ratio will have the value $1$ or $100\%$.
+Reviewing the five scatter plots (Graphs 1 to 5) it can easily be seen that if the line is a perfect fit to the actual $Y$ values as in *Graphs 1 & 5* then this ratio will have the value $1$ or $100\%$.
 
 If there is no link between $Y$ and $X$ then the *The Explained Variation* is zero hence the ratio will be $0$ or $0\%$. An example of this is shown in *Graph 3*.
 
@@ -722,16 +741,19 @@ is called **the Coefficient of Determination**, and usually labelled as $R^2$, a
 
 This ratio is always on the scale $0$ to $1$, but by convention is usually expressed as a percentage, so is regarded as on the scale $0$ to $100\%$. The interpretation of this ratio is as follows:
 
-![](images/R_sq_interp.png?width=30pc)
+
+```{r R_sq_interp, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/R_sq_interp.png")
+```
+
 
 The theoretical minimum **$R^2$** is $0$. However, since linear regression is based on the best possible fit, **$R^2$** will always be greater than zero, even when the predictor and outcome variables bear no relationship to one another. The definition and interpretation of **$R^2$** is a very **important tool** in the data analyst's tool kit **for tracking connections between a measured response variable and a measured explanatory variable**.
-
 
 ### Using sample data to track a connection
 
 When working with sample data to investigate any relationships that may exist between a measured response variable and a measured explanatory variable, the information contained within the sample is imperfect, so has to be interpreted in the light of sampling error. This is particularly important when interpreting the value of $R^2$ calculated from sample data. The sample R2 value gives a measure of the strength of the connection, and this can sometimes be difficult to interpret particularly if the sample size is small. 
 
-The data analysis methodology as set out earlier, is a procedure that enables you to make judgements from sample data. The methodology requires you to know what specific procedures make up the Initial Data Analysis IDA and how to interpret the results of the IDA to obtain one of three outcomes:
+The data analysis methodology as set out earlier, is a procedure that enables you to make judgements from sample data. The methodology requires you to know what specific procedures make up the Initial Data Analysis, IDA, and how to interpret the results of the IDA to obtain one of three outcomes:
 
 i.	 No evidence of a connection between the response and the explanatory variable
 ii.	 Clear evidence of a connection between the response and the explanatory variable
@@ -741,7 +763,7 @@ If Further Data Analysis, FDA, is required then you need to know what constitute
 
 Finally, if a connection between the response variable and the explanatory variable is detected then a description of the connection is required. In this case the connection needs to be described.
 
-To demonstrate the data analysis methodology we'll go back to Share Price Study Case Study.
+To demonstrate the data analysis methodology we'll go to the Share Price Case Study.
 
 **Share Price Study Data**
 
@@ -775,7 +797,7 @@ $\text{Model to be estimated:  } Y = b_0 + b_1X + e$
 
 We start by accessing data:
 
-```{r, warnings=FALSE, message=FALSE, echo=TRUE}
+```{r, warnings=FALSE, message=FALSE}
 suppressPackageStartupMessages(library(dplyr))
 # read csv file
 companyd <- read.csv("https://tanjakec.github.io/mydata/SHARE_PRICE.csv", header=T)
@@ -800,48 +822,45 @@ iii. 	The IDA is inconclusive and further analysis is required.
 The simplest form of connection is a straight-line relationship and the question arises could a 
 straight-line relationship be matched with the information contained in the *Graphs* *1* to *5* discussed earlier?
 
-![](images/DAM_MvM.png?width=40pc)
+```{r DAM_MvM2, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/DAM_MvM.png")
+```
 
-As part of an informal investigation of the possible relationship between `Share_Price` and `Profit`, first we will use R to obtain a scatter plot with the line of the best fit. Rather than every time referring to the name of the data set containing the variables of interest, we will attach our data and refer to the variables directly using only their names (see help for the `attach( )` function). 
+As part of an informal investigation of the possible relationship between `Share_Price` and `Profit`, first we will use R to obtain a scatter plot with the line of the best fit. Rather than referring every time to the name of the data set containing the variables of interest, we will attach our data and refer to the variables directly using only their names (see help for the `attach( )` function). 
 
-```{r, echo=TRUE}
+```{r}
 attach(companyd)
 names(companyd)	# shows the names of the variables in the 'companyd' data frame
 plot(Share_Price ~ Profit, cex = .6, main = "Share Price = f(Profit) + e")
 abline(lm(Share_Price ~ Profit), lty = 2, col = 2)
 ```
 
-<span style="color:darkgray">
-Let's go through the code and the functions we have used to produce this graph. 
-</span>
+<span style="color:darkgray">Let's go through the code and the functions we have used to produce this graph.</span> 
 
 <span style="color:darkgray">
-- The `plot( )` function gives a scatterplot of two numerical variables. The first variable listed will be plotted on the horizontal axis and the second on the vertical axis, i.e. you 'feed' as the arguments first variable representing X and then variable representing Y: `plot( x, y)`.
-Considering that we are investigating a relationship between $X$ and $Y$ in the form of a regression line $Y = b_0 + b1_X + e$, we specify that in **R** as a formula `Y ~ X`, which can be read as "$Y$ is modelled as a function of $X$". This means that in the **R**’s `plot( )` function a formula interface can also be used, in which case the response variable $Y$ needs to come before the tilde ($\sim$) and $X$ variable that will be plotted on the horizontal axis.
-</span>
+- The `plot( )` function gives a scatterplot of two numerical variables. The first variable listed will be plotted on the horizontal axis and the second on the vertical axis, i.e. you 'feed' as the arguments first the variable representing X and then the variable representing Y: `plot( x, y)`.
+Considering that we are investigating a relationship between $X$ and $Y$ in the form of a regression line $Y = b_0 + b1_X + e$, we specify that in **R** as a formula `Y ~ X`, which can be read as "$Y$ is modelled as a function of $X$". This means that in the **R**’s `plot( )` function a formula interface can also be used, in which case the response variable $Y$ needs to come before the tilde ($\sim$) and $X$ variable that will be plotted on the horizontal axis.</span>
 
 <span style="color:darkgray">
-- Next, we fit a **line of the best-fit** through our scatterplot using the `abline( )` function for the linear model $Y = b_0 + b_1X$ to see how close are the points to the fitted line. The basic R function for **fitting linear models by ordinary least squares** is the `lm( )`, which stands for **l**inear **m**odel. All we need to feed R with when using the `lm( )` function is the formula `Y~X`.
+- Next, we fit a **line of best-fit** through our scatterplot using the `abline( )` function for the linear model $Y = b_0 + b_1X$ to see how close the points are to the fitted line. The basic R function for **fitting linear models by ordinary least squares** is the `lm( )`, which stands for **l**inear **m**odel. All we need to feed R with when using the `lm( )` function is the formula `Y~X`.
 </span>
 
 The scatterplot shows a fairly strong and reasonably linear relationship between the two variables. In other words, the fit is reasonably good, but it is not perfect and we could do with some more information about it. Let us see what the `lm( )` function provide as a part of the output.
 
-```{r, echo=TRUE}
+```{r}
 lm(Share_Price ~ Profit)
 ```
 
 <span style="color:darkgray">
 First, R displays the fitted model, after which it shows the estimates of the two parameters 
-$b_0$ & $b_1$ to which it refers to as coefficients.
+$b_0$ & $b_1$ to which it refers as coefficients.</span>
 
 <span style="color:darkgray">
  -	the intercept, $b_0 = 258.924$
- 
-<span style="color:darkgray"> 
  -	the slope, $b_1= 4.057$
-</span>
+<\span>
 
-We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good/bad: that is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of your, as a modeller, viewpoint/theory.
+We must now take this estimated model and ask a series of questions to decide whether or not our estimated model is good/bad: that is, we have to subject the fitted model to a set of tests designed to check the validity of the model, which is in effect a test of your viewpoint/theory as a modeller.
 
 Examining the scatterplot, we can see that not all of the points lie on the fitted line $Share\_Price = 258.924 + 4.057Profit$. To explain how strong the relationship is between the two variables we need to obtain the coefficient of determination known as the $R^2$ parameter.  
 
@@ -855,7 +874,7 @@ We realised that the closer $R^2$ is to $100\%$ then the better the model is, an
 
 To obtain all of the information about the fitted model we can use the `summary( )` function as in the following:
 
-```{r, echo=TRUE}
+```{r}
 summary(lm(Share_Price ~ Profit))
 ```
  
@@ -864,45 +883,42 @@ So, what have we got here? 🤔
 We will discuss some of the key components of R's `summary( )` function for linear regression models.
 
 <span style="color:darkgray">
- - **Call**: shows what function and variables were used to create the model.
- 
-<span style="color:darkgray">
- - **Residuals**: difference between what the model predicted and the actual value of Y. Try to see if you can calculate this 'residuals' section by yourself using: `summary(Y-model$fitted.values)`. 🤓
+- **Call**: shows what function and variables were used to create the model. </span> 
 
-<span style="color:darkgray"> 
- - **Coefficients**: 
-<span style="color:darkgray">  
-  * estimated parameters for intercept and slope: $b_0$ and $b_1$
-<span style="color:darkgray">   
-  * Std. Error is Residual Standard Error divided by the square root of the sum of the square of that particular explanatory variable.
-<span style="color:darkgray">   
-  * t value: Estimate divided by Std. Error
-<span style="color:darkgray">   
-  * Pr(>|t|): is the value in a t distribution table with the given degrees of freedom.
-</span>
+<span style="color:darkgray">
+- **Residuals**: the difference between what the model predicted and the actual value of Y. Try to see if you can calculate this 'residuals' section by yourself using: `summary(Y-model$fitted.values)`. 🤓
+</span> 
+
+<span style="color:darkgray">
+- **Coefficients**: 
+
+  + estimated parameters for intercept and slope: $b_0$ and $b_1$
+  + Std. Error is Residual Standard Error divided by the square root of the sum of the square of that particular explanatory variable.
+  + t value: Estimate divided by Std. Error
+  + Pr(>|t|): is the value in a t distribution table with the given degrees of freedom.
+</span>  
 
 <span style="color:darkred">
-Note that in the first section we can find statistics relevant to the estimation of the model's parameters. In the second part of the output we can find statistics related to the overall goodness of the fitted model.
-</span>
+Note that in the first section we can find statistics relevant to the estimation of the model's parameters. In the second part of the output we can find statistics related to the overall 'goodness' of the fitted model.
+</span> 
 
 <span style="color:darkgray">
 The `summary(lm( ))` produces the standard deviation of the error. We know that standard deviation is the square root of variance. Standard Error is very similar, the only difference is that instead of dividing by $n-1$, you subtract $n$ minus $1 + k$, where $k$ is the number of explanatory variables used in the model. See if you can use and adjust the code below to calculate this statistic. 🤓 
 </span>
 
 
-> ```
-> # Residual Standard Error
-> k <- length(model$coefficients) - 1 #Subtract one to ignore intercept
-> SSE <- sum(model$residuals^2)
-> n <- length(model$residuals)
-> sqrt(SSE / (n-(1+k)) ) # Residual Standard Error
-> ```
-
+ ```
+ # Residual Standard Error
+ k <- length(model$coefficients) - 1 #Subtract one to ignore intercept
+ SSE <- sum(model$residuals^2)
+ n <- length(model$residuals)
+ sqrt(SSE / (n-(1+k)) ) # Residual Standard Error
+ ```
 <span style="color:darkgray">
 Next is the *coefficient of determination*, which helps us determine how well the model fits to the data. We have already seen that $R^2$ subtracts the residual error from the variance in Y. The bigger the error, the worse the remaining variance will appear.
 </span>
 
-<span style="color:darkgray">
+<span style="color:darkgray"> 
 For the time being we will skip $R^2_{adjusted}$ and point out that it is used for models with multiple variables, to which you will be introduced in the next section.   
 </span>
 
@@ -914,10 +930,9 @@ Lastly, the *F-Statistic* is the second “test” that the summary function pro
 
 To go back to our model interpretation. Earlier, we said after examining the scatter plot that there is a a clear link between *Share_Price* and *Profit*. This is confirmed by the value of $R^2 = 74.67\%$. The interpretation of $R^2$ is suggesting that $74.67\%$ of the changes in *Share_Price* are explained by changes in *Profit*. Alternatively,  $25.33\%$ of the changes in *Share_Price* are due to other variables.
 
-For this example the outcome of the IDA is that there is clear evidence of a link between *Share_Price* and *Profit* and the nature of the influence being that as *Profit* increases *Share_Price* also increases. It only remains to describe the connection, and discuss how effective the model is, and ask if it can be used to predict *Share_Price* value from the value of *Profit*? 🤔 
+For this example the outcome of the IDA is that there is clear evidence of a link between *Share_Price* and *Profit* and the nature of the influence being that as *Profit* increases *Share_Price* also increases. It only remains to describe the connection, and discuss how effective the model is, and ask if it can be used to predict *Share_Price* value from the value of *Profit*.     🤔 
 
-
-### Further data analysis (FDA)
+### Further Data Analysis (FDA)
 
 The adequacy of $R^2$ can be judged both informally and formally using hypothesis testing.
 Like all hypothesis tests, this test is carried out in four stages:
@@ -932,33 +947,37 @@ Like all hypothesis tests, this test is carried out in four stages:
 
 *The Coefficient of Determination* $R^2$ is a useful quantity. By definition if $R^2 = 0$ then there is no connection between the response variable and the explanatory variable. Conversely if the value of $R^2$ is greater than zero there must be a connection.  This enables the formal hypotheses to be defined as:
 
-+ $H_0 : R^2  = 0$ (There is no relationship between the response and interest and the explanatory variable.)
++ $H_0 : R^2  = 0$ (There is no relationship between the response and the explanatory variable.)
 + $H_1 : R^2  > 0$ (There is a relationship between the response and the explanatory variable.)
 
 **Stage 2:**	Defining the test parameters and the decision rule.
 
 The decision rule is based on the *F statistic*. The *F distribution* has a shape as shown below:
 
-![](images/F-dist.png?width=40pc)
+```{r F-testF-dist, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/F-dist.png")
+```
 
-The value of $F_{crit}$ is the value that divides the distribution with $95\%$ of the area to the left of the $F_{crit}$ ordinate, and $5\%$ to the right.  The accepted terminology is $F_{crit}$ but this text will call this quantity $F_{calc}$ to signify it is a quantity obtained from statistical tables. 
+The value of $F_{crit}$ is the value that divides the distribution with $95\%$ of the area to the left of the $F_{crit}$ coordinate, and $5\%$ to the right. The accepted terminology is $F_{crit}$ but this text will call this quantity $F_{calc}$ to signify it is a quantity obtained from statistical tables. 
 
 The **decision rule** is:
 
 - If the value of $F_{calc}$ from the sample data is larger than $F_{crit}$, then the sample evidence favours the decision that there is a connection between the response variable and the explanatory variable. (i.e. favours $H_1$.)
 
-- If the value of $F_{calc}$ is smaller than $F_{crit}$ then the sample evidence is consistent with no connection between the response variable and the explanatory variable. (i.e. favours $H_0$)
+- If the value of $F_{calc}$ is smaller than $F_{crit}$ then the sample evidence is consistent with no connection between the response variable and the explanatory variable. (i.e. favours $H_0$.)
 
 The decision rule can be summarised as:
 
-If $F_{calc}  <  F_{crit}$ then favour $H_0$,  whilst if $F_{calc}  > F_{crit}$ then favour $H_1$. This decision rule can be represented graphically as below:
+If $F_{calc}  <  F_{crit}$ then it favours $H_0$, whilst if $F_{calc}  > F_{crit}$ then it favours $H_1$. This decision rule can be represented graphically as shown below:
 
-![](images/F-test.png?width=40pc)
+```{r F-test, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/F-test.png")
+```
 
 The decision rule maybe written as:
 
  - If $F_{calc}  <  F_{crit}$ then accept $H_0$
- - If $F_{calc}  > F_{crit}$ then accept $H_1$
+ - If $F_{calc}  >  F_{crit}$ then accept $H_1$
 
 The value of $F_{crit}$ depends on the amount of data in the sample.  The *Degrees of Freedom* (usually abbreviated to $df$) express this dependence on the sample size. For any given set of sample data, having obtained the $df$ the specific value of $F_{crit}$ can be obtained from Statistical Tables of the *F distribution*, or simply by using the `qf(p, df1, df2)` function in R.
 
@@ -966,7 +985,7 @@ The value of $F_{crit}$ depends on the amount of data in the sample.  The *Degre
 
 For the investigation of the *Share_Price* vs *Profit* we plot the scatterplot and obtain the summary of the fitted model: $Share\_Price = b_0 + b_1Profit$
 
-```{r, echo=TRUE}
+```{r}
 # create a scatterplot
 plot(Share_Price ~ Profit, cex = .6, main = "Share Price = f(Profit) + e")
 # fit the model
@@ -980,16 +999,16 @@ summary(model_1)$r.squared
 This is a good model explaining almost $3/4$ of the overall variability in the explanatory variable $Y$. Hence, based on the sample evidence, variable *Profit*, can explain $74.67\%$ of overall variation in the variable *Share_Price*.
 
 <span style="color:darkred">
-Note, that if we don't reject that there is a relationship between the two variables we will obtain full output of the `summary(lm(model_1))` function regardless of the need for FDA. If we conclude that there is a clear relationship, we will need the estimates of the parameters to describe it, and if we need further to investigate the significance of the relationship we need relevant statistics for conducting the FDA. 
+Note, that if we don't reject that there is a relationship between the two variables we will obtain full output of the `summary(lm(model_1))` function regardless of the need for FDA. If we conclude that there is a clear relationship, we will need the estimates of the parameters to describe it, and if we need to investigate further the significance of the relationship we need relevant statistics for conducting the FDA. 
 </span>
 
 In the cases where $R^2 \approx 0$ we will carry out a hypothesis test for which we need $F_{calc}$ from the `summary( )` function. 
 
-Let us assume that the $R^2$ for the given example *Share_Price vs Profit* is very small and close to zero. In that case, we cannot simply reject it as a statistically insignificant relationship, as $R^2$ is not zero, but neither can we with confidence accept it as a statistically valid relationship based on the sample evidence we use.
+Let us assume that the $R^2$ for the given example *Share_Price vs Profit* is very small and close to zero. In that case, we cannot simply reject it as a statistically insignificant relationship, as $R^2$ is not zero, but neither can we accept it with confidence as a statistically valid relationship based on the sample evidence we use.
 
 This step requires the calculation of the $F_{calc}$ value from the sample data, and the determining of the degrees of freedom.  
 
-```{r, echo=TRUE}
+```{r}
 summary(model_1)
 ```
 
@@ -1005,17 +1024,20 @@ F_crit
 $F_{crit} = 4.01$ and using the decision rule given, we get that
 
 $$F_{calc}=171 > F_{crit}=4.01\text{ => accept }H_1$$
-, ie this model is statistically significant and we need to describe it.
+, i.e. this model is statistically significant and we need to describe it.
 
 #### Describe the relationship
 
 If the resulting outcome from either the Initial Data Analysis (IDA) or the Further Data Analysis (FDA) is that there is a connection between the response variable and the explanatory variable then the last step is to describe this connection.
 
-For the data analysis situation Measured v Measured this is simply stating the line of the best fit. This is a description of the connection between the two variables. Additionally the $R^2$ value should be quoted as this gives a measure of how well the data and the line of best fit match.
+For the data analysis situation Measured v Measured this is simply stating the line of best fit. This is a description of the connection between the two variables. Additionally the $R^2$ value should be quoted as this gives a measure of how well the data and the line of best fit match.
 
 The $R^2$ value can be interpreted as a measure of the quality of predictions made from the line of best fit according to the rule of thumb:
 
-![](images/Prediction_Rsq.png?width=40pc)
+
+```{r Prediction_Rsq, out.width = "500px",  fig.align = 'center', echo=FALSE}
+knitr::include_graphics("images/Prediction_Rsq.png")
+```
 
 In our example *Share_Price vs Profit* we had the following estimations:
 
@@ -1026,7 +1048,7 @@ $$Share\_Price = 258.9243 + 4.0567 Profit$$
 
 with $R^2 = 74.67\%$.
 
-#### Making predictions
+### Making predictions
 
 Can the regression line be used to make predictions about the *Share_Price* for a company with a given value of the *Profit*?
 
@@ -1035,9 +1057,9 @@ Suppose we have to make a prediction of the $Share\_{Price}$ for  company with t
 The predictions are calculated from the model as follows:
 
 $$Share\_Price = 258.9243 + 4.0567 \times 137.2000 = 815.5035$$
-Since the $R^2$ value is nearly $75\%$ any predictions about *Share_Price* made from this model are likely to be of good quality, but there may be some issues with some of these predictions of the *Profit* values out of the data range used in prediction. The *Profit* in the given data set range from about $3$ to $170$. Over this range any prediction is likely to be of good quality since the information in the data is reflecting experience within this range, and the $R^2$ value is nearly $75\%$.  
+Since the $R^2$ value is nearly $75\%$ any predictions about *Share_Price* made from this model are likely to be of good quality, but there may be some issues with some of these predictions of the *Profit* values out of the data range used in prediction. The *Profit* in the given data set ranges from about $3$ to $170$. Over this range any prediction is likely to be of good quality since the information in the data is reflecting experience within this range, and the $R^2$ value is nearly $75\%$.  
 
-```{r, echo=TRUE}
+```{r}
 summary(Profit)
 ```
 
@@ -1048,7 +1070,7 @@ In general terms when interpreting a regression model the intercept is of little
 The **gradient** is defined to be the **change in $Y$ for a unit increase in $X$**.  For the model developed the gradient is $4.06$. This is suggesting for every additional unit increase in *Profit*, *Share_Price* increases by $£4.06$.
 
 
-> Avoid extrapolation! Refrain from predicting/interpreting the regression line for X-values outside the range of X in the data set!
+<span style="color:darkgrey">Avoid extrapolation! Refrain from predicting/interpreting the regression line for X-values outside the range of X in the data set!</span>
 
 
 ### **YOUR TURN** 👇
@@ -1057,7 +1079,7 @@ The **gradient** is defined to be the **change in $Y$ for a unit increase in $X$
 
 2) Download The *Supermarket* data set available at <https://github.com/TanjaKec/mydata> using the following link <https://tanjakec.github.io/mydata/SUPERM.csv>.
 
-**Crate a report in which you will:**
+**Create a report in which you will:**
 
 1) Give a brief explanation of the following statistical terms:
 
@@ -1074,10 +1096,12 @@ response variable and an attribute explanatory variable?
 iii.  What are the statistical concepts used to investigate the relationship between a measured
 response variable and a measured explanatory variable?
 
-3) Undertake the Data Analysis for the Supermarket Data Set to investigate the relationships between the response variable and from your point of view regarded as worth of attention set of explanatory variables. Present your points of views about the nature of the relationships and give a complete explanation, within the data analysis methodology, of this analysis.
+3) Undertake the Data Analysis for the Supermarket Data Set to investigate the relationships between the response variable and a set of explanatory variables, which you think are worthy of attention. Present your points of view about the nature of the relationships and give a complete explanation, within the data analysis methodology, of this analysis.
 
-**You are expected to bring your report to into the next class.**
+**You are expected to bring your report to the next class.**
 
+-----------------------------
+[Creative Commons Attribution-ShareAlike 4.0 International License.](https://creativecommons.org/licenses/by-sa/4.0/)
 
 -----------------------------
 [Creative Commons Attribution-ShareAlike 4.0 International License.](https://creativecommons.org/licenses/by-sa/4.0/)
