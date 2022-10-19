@@ -1036,7 +1036,7 @@ The $R^2$ value can be interpreted as a measure of the quality of predictions ma
 
 
 ```{r Prediction_Rsq, out.width = "500px",  fig.align = 'center', echo=FALSE}
-knitr::include_graphics("images/Prediction_Rsq.png")
+knitr::include_graphics("images/Predict_Rsq.png")
 ```
 
 In our example *Share_Price vs Profit* we had the following estimations:
@@ -1103,7 +1103,5 @@ response variable and a measured explanatory variable?
 -----------------------------
 [Creative Commons Attribution-ShareAlike 4.0 International License.](https://creativecommons.org/licenses/by-sa/4.0/)
 
------------------------------
-[Creative Commons Attribution-ShareAlike 4.0 International License.](https://creativecommons.org/licenses/by-sa/4.0/)
 
 
