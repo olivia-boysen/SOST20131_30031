@@ -8,6 +8,7 @@ output:
     toc: true
     toc_float: true
     df_print: paged
+    code_folding: show
 #    number_sections: true
 ---
 
@@ -570,7 +571,7 @@ A simple way to do this is to draw what is considered to be **the line of best f
 
 **The intercept** can be read off the graph as approximately $5$, and **the gradient** can be simply measured since if $X = 0$  then  $Y = 5$, and if  $X = 5$ then  $Y = 15$,  so for a change in $X$ of $5$ units (from 0 to 5) $Y$ changes by $10$, from $5$ to $15$. The definition of **the gradient** is  **The change in Y for a unit increase in X**  hence the gradient for this data set is $10/5 = 2$.
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 x <- c(1:6)
 y <- c(7, 8, 12, 13, 14, 18)
 plot(x, y, pch = 16, main = "y = 5 + 2x + e", xlim = c(0.25, 6), ylim = c(0, 20))
@@ -616,7 +617,7 @@ This procedure of finding the intercept and the gradient of a line that makes th
 
 In R we use the `lm( )` function to fit linear models as illustrated below.
 
-```{r}
+```{r, echo=TRUE}
 x <- c(1:6)
 y <- c(7, 8, 12, 13, 14, 18)
 plot(x, y, pch = 16, main = "y = f(x) + e", xlim = c(0.25, 6), ylim = c(0, 20))
@@ -797,7 +798,7 @@ $\text{Model to be estimated:  } Y = b_0 + b_1X + e$
 
 We start by accessing data:
 
-```{r, warnings=FALSE, message=FALSE}
+```{r, warnings=FALSE, message=FALSE, echo=TRUE}
 suppressPackageStartupMessages(library(dplyr))
 # read csv file
 companyd <- read.csv("https://tanjakec.github.io/mydata/SHARE_PRICE.csv", header=T)
@@ -828,7 +829,7 @@ knitr::include_graphics("images/DAM_MvM.png")
 
 As part of an informal investigation of the possible relationship between `Share_Price` and `Profit`, first we will use R to obtain a scatter plot with the line of the best fit. Rather than referring every time to the name of the data set containing the variables of interest, we will attach our data and refer to the variables directly using only their names (see help for the `attach( )` function). 
 
-```{r}
+```{r, echo=TRUE}
 attach(companyd)
 names(companyd)	# shows the names of the variables in the 'companyd' data frame
 plot(Share_Price ~ Profit, cex = .6, main = "Share Price = f(Profit) + e")
@@ -847,7 +848,7 @@ Considering that we are investigating a relationship between $X$ and $Y$ in the 
 
 The scatterplot shows a fairly strong and reasonably linear relationship between the two variables. In other words, the fit is reasonably good, but it is not perfect and we could do with some more information about it. Let us see what the `lm( )` function provide as a part of the output.
 
-```{r}
+```{r, echo=TRUE}
 lm(Share_Price ~ Profit)
 ```
 
@@ -874,7 +875,7 @@ We realised that the closer $R^2$ is to $100\%$ then the better the model is, an
 
 To obtain all of the information about the fitted model we can use the `summary( )` function as in the following:
 
-```{r}
+```{r, echo=TRUE}
 summary(lm(Share_Price ~ Profit))
 ```
  
@@ -985,7 +986,7 @@ The value of $F_{crit}$ depends on the amount of data in the sample.  The *Degre
 
 For the investigation of the *Share_Price* vs *Profit* we plot the scatterplot and obtain the summary of the fitted model: $Share\_Price = b_0 + b_1Profit$
 
-```{r}
+```{r, echo=TRUE}
 # create a scatterplot
 plot(Share_Price ~ Profit, cex = .6, main = "Share Price = f(Profit) + e")
 # fit the model
@@ -1008,7 +1009,7 @@ Let us assume that the $R^2$ for the given example *Share_Price vs Profit* is ve
 
 This step requires the calculation of the $F_{calc}$ value from the sample data, and the determining of the degrees of freedom.  
 
-```{r}
+```{r, echo=TRUE}
 summary(model_1)
 ```
 
@@ -1016,7 +1017,7 @@ summary(model_1)
 
 The associated *F statistic* evaluating the significance of the full model $F_{calc} = 171$ with $df_1=1$ and $df_2=58$. Thus, 
 
-```{r}
+```{r, echo=TRUE}
 F_crit <- qf(0.95, 1, 58)
 F_crit
 ```
@@ -1059,7 +1060,7 @@ The predictions are calculated from the model as follows:
 $$Share\_Price = 258.9243 + 4.0567 \times 137.2000 = 815.5035$$
 Since the $R^2$ value is nearly $75\%$ any predictions about *Share_Price* made from this model are likely to be of good quality, but there may be some issues with some of these predictions of the *Profit* values out of the data range used in prediction. The *Profit* in the given data set ranges from about $3$ to $170$. Over this range any prediction is likely to be of good quality since the information in the data is reflecting experience within this range, and the $R^2$ value is nearly $75\%$.  
 
-```{r}
+```{r, echo=TRUE}
 summary(Profit)
 ```
 
