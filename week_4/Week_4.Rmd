@@ -1078,9 +1078,7 @@ The **gradient** is defined to be the **change in $Y$ for a unit increase in $X$
 
 1) Investigate the nature of the relationship in Share Price Study data for `Share_Price vs RD` and `Share_Price vs Turnover`.
 
-2) Download The *Supermarket* data set available at <https://github.com/TanjaKec/mydata> using the following link <https://tanjakec.github.io/mydata/SUPERM.csv>.
-
-**Create a report in which you will:**
+2) **Create a report in which you will:**
 
 1) Give a brief explanation of the following statistical terms:
 
@@ -1097,7 +1095,6 @@ response variable and an attribute explanatory variable?
 iii.  What are the statistical concepts used to investigate the relationship between a measured
 response variable and a measured explanatory variable?
 
-3) Undertake the Data Analysis for the Supermarket Data Set to investigate the relationships between the response variable and a set of explanatory variables, which you think are worthy of attention. Present your points of view about the nature of the relationships and give a complete explanation, within the data analysis methodology, of this analysis.
 
 **You are expected to bring your report to the next class.**
 
