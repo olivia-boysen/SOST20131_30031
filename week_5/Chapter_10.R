@@ -1,6 +1,6 @@
 # multiple regression
 
-ozone.pollution <- read.csv("data/ozone.data.csv")
+ozone.pollution <- read.csv("Social_Research/SOST20131_30031/data/ozone.data.csv")
 attach(ozone.pollution)
 names(ozone.pollution)
 
@@ -49,7 +49,7 @@ plot(model8)
 
 # a more tricky example
 
-pollute <- read.csv("data/sulphur.dioxide.csv")
+pollute <- read.csv("Social_Research/SOST20131_30031/data/sulphur.dioxide.csv")
 attach(pollute)
 names(pollute)
 
@@ -58,6 +58,7 @@ pairs(pollute,panel=panel.smooth)
 par(mfrow=c(1,1))
 library(tree)
 model <- tree(Pollution~.,data=pollute)
+summary(model)
 plot(model)
 text(model)
 
