@@ -207,8 +207,8 @@ There are many other, more sophisticated, tests that can be used to judge the va
 
 The $p$-value is a probability of obtaining a value of the test statistic or a more extreme value of the test statistic assuming that the null hypothesis is true. Thus, the $p$-value approach involves determining "likely" or "unlikely" by determining the probability, assuming the null hypothesis were true of observing a more extreme test statistic in the direction of the alternative hypothesis than the one observed. 
 
-- if the $p$-value $\leqslant$ $\alpha$ \Rightarrow accept $H_0$ ("unlikely")
-- if the $p$-value \textgreater $\alpha$ \Rightarrow reject $H_0$ in favour of $H_1$ ("likely")
+- if the $p$-value $>$ $\alpha$ $\Rightarrow$ accept $H_0$ ("unlikely")
+- if the $p$-value $<$ $\alpha$ $\Rightarrow reject$ $H_0$ in favour of $H_1$ ("likely")
 
 As such, in the context of the inference about the regression parameters, the **$p$-values** help determine whether the relationships that you observe in your sample also exist in the larger population. The $p$-value for each independent variable tests the null hypothesis that the variable has no effect on the dependent variable. In other words, there is insufficient evidence to conclude that there is effect in the larger population level.
 
