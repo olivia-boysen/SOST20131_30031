@@ -39,7 +39,7 @@ class(sex)
 unclass(sex)
 ```
 
-Note, that the `unclass()` function removes the attributes of the `sex` variable above and prints it using default print method, allowing for easier examination of the internal structure of the object.
+Note, that the `unclass()` function removes the attributes of the `sex` variable above and prints it using the default print method, allowing for easier examination of the internal structure of the object.
 
 However, when using an attribute variable in a linear regression model it would make no sense to treat it as a measured explanatory variable because of its numeric levels. In the context of linear modelling we need to code them to represent the levels of the attribute. 
 
@@ -80,7 +80,7 @@ The way in which R codes dummy variables is controlled by the _**contrast**_ opt
 options("contrasts")
 ```
 
-The output points out the conversion of the factor into an appropriate set of contrasts. In particular, the first one: for unordered factors, and the second one: the ordered factors. The former one is applicable in our context.
+The output points out the conversion of the factor into an appropriate set of contrasts. In particular, the first one: for unordered factors, and the second one: the ordered factors. The former is applicable in our context.
 
 To explicitly identify the coding of the factor, i.e. dummy variable used by R, we can use the `contrasts()` function.
 
@@ -107,7 +107,7 @@ Note that applied "contr.treatment" conversion takes only the value 0 or 1 and t
 | AssocProf   | 1 | 0 |
 | Prof        | 0 | 1 |
 
-There are many different ways of coding attribute variables besides the dummy variable approach explained here. All of these different approaches lead to equivalent model fits. What differ are  the coefficients, i.e. model parameters as they require different interpretations, arranged to measure particular contrasts. This 0/1 coding implemented in R's default **`contr.treatment`** contrast offers straightforward interpretation of the associated parameter in the model, which often is not the case when implementing other contrasts. 
+There are many different ways of coding attribute variables besides the dummy variable approach explained here. All of these different approaches lead to equivalent model fits. What differs are the coefficients, i.e. model parameters as they require different interpretations, arranged to measure particular contrasts. This 0/1 coding implemented in R's default **`contr.treatment`** contrast offers straightforward interpretation of the associated parameter in the model, which often is not the case when implementing other contrasts. 
 
 ## Interpreting coefficients of attribute variables
 
@@ -150,7 +150,7 @@ Next, we need to specify the model that embodies our mechanistic understanding o
 factors involved and the way that they are related to the response variable. It would make sense to expect that all of the available $x$ variables may impact the behaviour of $y$, thus the model we wish to build should reflect our viewpoint, i.e. $y = f(x_1, x_2, x_3, x_4, x_5)$:
 
 $$y = b_0 + b_1x_1 + b_2x_2 + b_3x_3 + b_4x_4 + b_5x_5 + e$$
-Our viewpoint states a belief that all explanatory variables have positive impact on the response. For example, more years in service will cause higher salary.
+Our viewpoint states a belief that all explanatory variables have a positive impact on the response. For example, more years in service will cause a higher salary.
 
 Our objective now is to determine the values of the parameters in the model that lead to **the best fit of the model to the data**. That is, we are not only trying to estimate the parameters of the model, but we are also seeking the minimal adequate model to describe the data.
 
@@ -169,19 +169,19 @@ suppressPackageStartupMessages(library(GGally))
 ggpairs(Salaries)
 ```
 
-This is an information rich visualisation that includes pairwise relationships of all the variables we want to consider for our model. By focusing on the last column of the plots, we can notice influence from all explanatory variables onto the response, except maybe for `discipline` and `sex`. We also notice unbalanced representation of the groups for variables `rank` and `sex`, but for the purpose of our practice in fitting a multi factor model this isn't too problematic. We need to be especially concerned with the extent of correlations between the explanatory variables and what is of particular interest to us is the **high multicollinearity** between `rank`, `yrs.since.phd` and `yrs.service`, which happens when the variables are **highly linearly related**. 
+This is an information rich visualisation that includes pairwise relationships of all the variables we want to consider for our model. By focusing on the last column of the plots, we can notice influence from all explanatory variables onto the response, except maybe for `discipline` and `sex`. We also notice unbalanced representation of the groups for the variables `rank` and `sex`, but for the purpose of our practice in fitting a multi-factor model this isn't too problematic. We need to be especially concerned with the extent of correlations between the explanatory variables, and what is of particular interest to us is the **high multicollinearity** between `rank`, `yrs.since.phd` and `yrs.service`, which happens when the variables are **highly linearly related**. 
 As a consequence, we will need to keep an eye on the significance of using all of these variables in the model. 
 
 ## Fitting the Model
 
-There are no fixed rules when fitting the linear models, but there are adopted standards that have proven to work well in practice. We start off by fitting a maximal model then we carry on simplifying it by removing non-significant explanatory variables. This needs to be done with caution, making sure that the simplifications make good scientific sense, and do not lead to significant reductions in explanatory power. Although this should be the adopted strategy for fitting a model it is not a guarantee to finding all the important structures in a complex data frame.
+There are no fixed rules when fitting linear models, but there are adopted standards that have proven to work well in practice. We start off by fitting a maximal model then we carry on simplifying it by removing non-significant explanatory variables. This needs to be done with caution, making sure that the simplifications make good scientific sense, and do not lead to significant reductions in explanatory power. Although this should be the adopted strategy for fitting a model, it is not a guarantee to finding all the important structures in a complex data frame.
 
 We can summarise our model building procedure algorithm as follows:
 
 i) Fit the **maximal model** that includes all the variables
     - Assess the overall significance of the model by checking how big the $R^2$/$\bar{R}^2$ is. If statistically significant, carry on with the model fitting procedure, otherwise stop (F-test)
 ii) Remove the least significant terms **one at a time**
-    - Check variables' $t_{calculated}$ values and perform a one tail or two tail _t-test_ depending on your prior view 
+    - Check the variables' $t_{calculated}$ values and perform a one tail or two tail _t-test_ depending on your prior view 
     - If the deletion causes an insignificant increase in $\bar{R}^{2}$ leave that term out of the model
 iii) Keep removing terms from the model until the model contains nothing but significant terms.
 
@@ -287,21 +287,21 @@ Note that `R` doesn't need to use $dr_1$, to create three models; it only needs 
 
 telling us that:
 
-- $b_0$ is average salary for Assistant Professor who works in a "theoretical" department and $b_0 + b_3$ average salary for Assistant Professor who works in an "applied" department
-- $(b_0 + b_1)$ is average salary for Associate Professor who works in a "theoretical" department and $(b_0 + b_1) + b_3$ average salary for Associate Professor who works in an "applied" department
-- $(b_0 + b_2)$ is average salary for Professor who works in a "theoretical" department and $(b_0 + b_2) + b_3$ average salary for Professor who works in an "applied" department
+- $b_0$ is the average salary for an Assistant Professor who works in a "theoretical" department and $b_0 + b_3$ the average salary for an Assistant Professor who works in an "applied" department
+- $(b_0 + b_1)$ is the average salary for an Associate Professor who works in a "theoretical" department and $(b_0 + b_1) + b_3$ the average salary for an Associate Professor who works in an "applied" department
+- $(b_0 + b_2)$ is the average salary for a Professor who works in a "theoretical" department and $(b_0 + b_2) + b_3$ the average salary for a Professor who works in an "applied" department
 
 Learning this we can make an interpretation of our final fitted model as follows:
 
 - For every year since PhD (`yrs.since.phd`) on average salary (`salary`) will go up by $\$534.63$ assuming the rest of the variables are fixed in the model
 - For every year in service (`yrs.service`) on average salary (`salary`) will go down by $\$476.72$ assuming the rest of the variables are fixed in the model
-- Average salary of an Assistant Professor (`rank: AsstProf `) who works in a "theoretical" department is $\$69,869.01$ and who works in an "applied" department is $\$84,374.16$; this can vary for the number of years in service and since PhD
-- Average salary of an Associate Professor (`rank: AssocProf`) who works in a "theoretical" department is $\$82,700.55$ and who works in an "applied" department is $\$97,205.70$; this can vary for the number of years in service and since PhD
-- Average salary of a Professor (`rank: Prof`) who works in a "theoretical" department is $\$115,156.70$ and who works in an "applied" department is $\$129,661.90$; this can vary for the number of years in service and since PhD
+- The average salary of an Assistant Professor (`rank: AsstProf `) who works in a "theoretical" department is $\$69,869.01$ and who works in an "applied" department is $\$84,374.16$; this can vary for the number of years in service and since PhD
+- The average salary of an Associate Professor (`rank: AssocProf`) who works in a "theoretical" department is $\$82,700.55$, and one who works in an "applied" department is $\$97,205.70$; this can vary for the number of years in service and since PhD
+- The average salary of a Professor (`rank: Prof`) who works in a "theoretical" department is $\$115,156.70$, and who works in an "applied" department is $\$129,661.90$; this can vary for the number of years in service and since PhD
 
 This model explains around $45\%$ of the variability in the response variable `salary`.
 
-Adding `~ 0` to `lm()` formula enables `R` to suppress the intercept. Note that if we remove the intercept, then we can directly obtain all “three intercepts” without a base level to fit the final fitted model:
+Adding `~ 0` to the `lm()` formula enables `R` to suppress the intercept. Note that if we remove the intercept, then we can directly obtain all “three intercepts” without a base level to fit the final fitted model:
   
 ```{r}
 model_2_1 <- lm(salary ~  0 + rank + discipline + yrs.since.phd + yrs.service)
@@ -312,7 +312,7 @@ summary(model_2_1)
 
 So far we have seen that by fitting an additive regression model to the data, we aim to identify and understand how the value of a dependent response variable changes when any one of the independent explanatory variables is changed while the other independent variables stay the same. This is a restrictive form of a model as it only allows for linear relationships between the response and the explanatory variables, and the way in which one explanatory variable affects the response is the same for any value of the other explanatory variables used in the model. 
 
-We need to add flexibility to accommodate these limitations. This will allow the use of linear models for **non-linear relationships** and in which the effect of one explanatory variable can be different for different values of the other explanatory variable by introducing the concept of **interaction**. This brings more complexity into the multivariate regression model. 
+We need to add flexibility to accommodate these limitations. This will allow the use of linear models for **non-linear relationships** in which the effect of one explanatory variable can be different for different values of the other explanatory variable by introducing the concept of **interaction**. This brings more complexity into the multivariate regression model. 
 
 <p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Case Study: The Quality of red Bordeaux Vintages**</font></p>
 
@@ -343,9 +343,9 @@ _What conclusions can we draw:_
 
 - We can notice a perfect relationship between the variables `Year` and `Age`. This is to be expected since this data was collected in 1983 and `Age` was calculated as: `Age` = 1983 - `Year`. Knowing this, we are going to remove `Year` from the analysis and use `Age` as it will be easier to interpret.
 
-- There is a strong relationship between `Year`, ie. `Age` and `FrancePop` and since we want to impose our viewpoint that the total population does not influence the quality of wine we will not consider this variable in the model.
+- There is a strong relationship between `Year`, ie. `Age` and `FrancePop` and since we want to impose our viewpoint that the total population does not influence the quality of the wine we will not consider this variable in the model.
 
-- We are going to investigate possible interactions between the rainfall (`WinterRain`) and growing season temperature (`AGST`). In `R` this will be created automatically by using the `*` operator.
+- We are going to investigate possible interactions between the rainfall (`WinterRain`) and the growing season temperature (`AGST`). In `R` this will be created automatically by using the `*` operator.
 
 _Let us build a model:_
 
@@ -361,7 +361,7 @@ summary(model1)
 ```
 The model explains well over $80\%$ of variability and is clearly a strong model, but the key question is whether we can simplify it. We will start the process of this model simplification by removing the three-way interaction as it is clearly not significant.
 ```{r}
-model2 <- update(model1, ~. -WinterRain:AGST:HarvestRain, data =wine)
+model2 <- update(model1, ~. -WinterRain:AGST:HarvestRain, data = wine)
 summary(model2)
 ```
 The $\bar{R}^2$ has slightly increased in value. Next, we remove the least significant two-way interaction term.
@@ -390,9 +390,9 @@ current model.
 
 The _best subset_ regression (*BREG*), also known as “all possible regressions”, as the name of the procedure indicates, fits a separate least squares regression for each possible combination of the $p$ predictors, i.e. explanatory variables. After fitting all of the models, BREG then displays the best fitted models with one explanatory variable, two explanatory variables, three explanatory variables, and so on. Usually, either adjusted R-squared or Mallows Cp is the criterion for picking the best fitting models for this process. The result is a display of the best fitted models of different sizes up to the full/maximal model and the final fitted model can be selected by comparing displayed models based on the criteria of parsimony. 
 
-"These methods are frequently are abused by naive researchers who seek to interpret the order of
-entry of variables into the regression equation as an index of their ‘‘importance.’’ This practice
-is potentially misleading." [J. Fox and S. Weisberg book: An R Companion to Applied Regression, Third Edition, Sage (2019)](https://socialsciences.mcmaster.ca/jfox/Books/Companion/)
+"These methods are frequently abused by naive researchers who seek to interpret the order of
+entry of variables into the regression equation as an index of their ‘‘importance’’. This practice
+is potentially misleading." [J. Fox and S. Weisberg's book: An R Companion to Applied Regression, Third Edition, Sage (2019)](https://socialsciences.mcmaster.ca/jfox/Books/Companion/)
 
 <span style="color:red"> 
 💡 When selecting a model one should remember the important concept of parsimony!
@@ -427,8 +427,7 @@ As [M.J. Crawley](https://royalsociety.org/people/michael-crawley-11279/) points
 
 <p><font color="black" face="Verdana, Geneva, sans-serif" size="+1.5">**Summary**</font></p>
 
-For problems ranging from bioinformatics to marketing, many analysts prefer to develop “classifiers” instead of developing predictive models
-
+For problems ranging from bioinformatics to marketing, many analysts prefer to develop “classifiers” instead of developing predictive models.
 
 ## Further Reading
 
@@ -440,9 +439,10 @@ Fox, J. (2002) An R and S-Plus Companion to Applied Regression, Sage, Thousand O
 
 ## YOUR TURN 👇
 
+
 1) Go back to the `Salaries` data Case Study:
   
-  i) Adding `~0` to `lm()` formula enables `R` to suppress the intercept. Try to fit the following model by removing the intercept. 
+  i) Adding `~0` to the `lm()` formula enables `R` to suppress the intercept. Try to fit the following model by removing the intercept. 
   
 ```
 model_2_1 <- lm(salary ~  0 + rank + discipline + yrs.since.phd + yrs.service)
@@ -451,14 +451,14 @@ summary(model_2_1)
 
 This will allow you to obtain all “three intercepts” without a reference level.  
 
-  * Does this model differ from the previously fitted `model_2`? Provide justified explanation
+  * Does this model differ from the previously fitted `model_2`? Provide a justified explanation
     
   * Interpret the model
 
 
   ii) Can the final fitted model developed for the `Salaries` data Case Study be further simplified? Justify your answer
 
-2) Use `Prestige` data available from the `carData` package of datasets designed to accompany [J. Fox and S. Weisberg book: An R Companion to Applied Regression, Third Edition, Sage (2019)](https://socialsciences.mcmaster.ca/jfox/Books/Companion/). Fit a multivariate model that explains variation in the response variable `prestige`, explaining the reasons behind the steps taken with appropriate interpretation of the final fitted model.   
+2) Use `Prestige` data available from the `carData` package of datasets designed to accompany [J. Fox and S. Weisberg's book: An R Companion to Applied Regression, Third Edition, Sage (2019)](https://socialsciences.mcmaster.ca/jfox/Books/Companion/). Fit a multivariate model that explains variation in the response variable `prestige`, explaining the reasons behind the steps taken with appropriate interpretation of the final fitted model.   
 
 `carData::Prestige`: The Canadian occupational prestige data, where the observations are occupations. Justification for treating the 102 occupations as a sample implicitly rests on the claim that they are "typical" of the population, at least with respect to the relationship between prestige and income.
 
