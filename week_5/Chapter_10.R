@@ -20,7 +20,7 @@ text(model)
 model1 <- lm(ozone~temp*wind*rad+I(rad^2)+I(temp^2)+I(wind^2))
 summary(model1)
 
-model2 <- update(model1,~. – temp:wind:rad)
+model2 <- update(model1,~. - temp:wind:rad)
 summary(model2)
 
 model3 <- update(model2,~. - wind:rad)
@@ -38,7 +38,7 @@ summary(model6)
 plot(model6)
 
 
-# start all over again with a new transfrmation of the response
+# start all over again with a new transformation of the response
 
 model7 <- lm(log(ozone)~temp*wind*rad+I(rad^2)+I(temp^2)+I(wind^2))
 
@@ -89,12 +89,13 @@ summary(model8)
 model9 <- update(model8,~.-Population:Wind)
 summary(model9)
 
-plot(model9)
+plot(model10)
 
 model10 <- update(model9,~. + Wind:Rain:Wet.days)
 summary(model10)
 
-
-
-
-
+library(tidyverse)
+library(car)
+vif(model1)
+cor(ozone.pollution)
+vif(ozone.pollution)
